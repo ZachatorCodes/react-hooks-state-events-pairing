@@ -1,18 +1,16 @@
+import React, {useState} from "react";
+import Video from "./Video.js";
 import video from "../data/video.js";
+import CommentArea from "./CommentArea.js";
 
 function App() {
-  console.log("Here's your data:", video);
+
+  const [commentVisibility, setCommentVisibility] = useState(true);
 
   return (
     <div className="App">
-      <iframe
-        width="919"
-        height="525"
-        src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-        frameBorder="0"
-        allowFullScreen
-        title="Thinking in React"
-      />
+      <Video videoInfo={video} commentVisibility={commentVisibility} setCommentVisibility={setCommentVisibility}/>
+      {commentVisibility ? <CommentArea comments={video.comments}/> : null}
     </div>
   );
 }
